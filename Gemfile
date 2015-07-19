@@ -17,6 +17,12 @@ gem 'therubyracer', platforms: :ruby
 # Use Bootstrap (correct way)
 gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 
+# Use FontAwesome fonts
+gem "font-awesome-rails"
+
+# .less prcessing for twitter-bootstrap-rails gem
+gem "less-rails"
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
