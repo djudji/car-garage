@@ -11,7 +11,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150719125308) do
+ActiveRecord::Schema.define(version: 20150719232633) do
+
+  create_table "cars", force: :cascade do |t|
+    t.boolean  "parked"
+    t.string   "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "custom_auto_increments", force: :cascade do |t|
+    t.string   "counter_model_name"
+    t.integer  "counter",            default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "custom_auto_increments", ["counter_model_name"], name: "index_custom_auto_increments_on_counter_model_name"
+
+  create_table "levels", force: :cascade do |t|
+    t.integer  "number"
+    t.integer  "num_slots"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "slots", force: :cascade do |t|
+    t.boolean  "occupied"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "tasks", force: :cascade do |t|
     t.text     "content"
@@ -38,5 +67,13 @@ ActiveRecord::Schema.define(version: 20150719125308) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+  create_table "vehicles", force: :cascade do |t|
+    t.boolean  "parked"
+    t.string   "veh_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "lic_plate"
+  end
 
 end
