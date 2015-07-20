@@ -29,7 +29,11 @@ class VehiclesController < ApplicationController
 
     respond_to do |format|
       if @vehicle.save
-        format.html { redirect_to @vehicle, notice: 'Vehicle was successfully created.' }
+        # We can't create a new vehicle without assigning a slot,
+        # So we can set the slot to available from here. Same thing for the update action.
+        @vehicle.slot.update(occupied: false)
+
+        format.html { redirect_to levels_url, notice: 'Vehicle was successfully created.' }
         format.json { render :show, status: :created, location: @vehicle }
       else
         format.html { render :new }
@@ -43,7 +47,8 @@ class VehiclesController < ApplicationController
   def update
     respond_to do |format|
       if @vehicle.update(vehicle_params)
-        format.html { redirect_to @vehicle, notice: 'Vehicle was successfully updated.' }
+        @vehicle.slot.update(occupied: false)
+        format.html { redirect_to levels_url, notice: 'Vehicle was successfully updated.' }
         format.json { render :show, status: :ok, location: @vehicle }
       else
         format.html { render :edit }
@@ -70,6 +75,6 @@ class VehiclesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def vehicle_params
-      params.require(:vehicle).permit(:parked, :veh_type, :lic_plate)
+      params.require(:vehicle).permit(:parked, :veh_type, :lic_plate, :slot_id)
     end
 end

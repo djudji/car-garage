@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150720133945) do
+ActiveRecord::Schema.define(version: 20150720152309) do
 
   create_table "custom_auto_increments", force: :cascade do |t|
     t.string   "counter_model_name"
@@ -69,6 +69,9 @@ ActiveRecord::Schema.define(version: 20150720133945) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "lic_plate"
+    t.integer  "slot_id"
   end
+
+  add_index "vehicles", ["slot_id"], name: "index_vehicles_on_slot_id"
 
 end

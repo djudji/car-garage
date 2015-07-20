@@ -8,9 +8,13 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  lic_plate  :string
+#  slot_id    :integer
 #
 
 class Vehicle < ActiveRecord::Base
+  belongs_to :slot
+  validates :slot, presence: true
+  
   #before_create :generate_pattern
   
   protokoll :lic_plate, :pattern => SecureRandom.hex(2).to_s+"-###%y-"+SecureRandom.hex(2).to_s

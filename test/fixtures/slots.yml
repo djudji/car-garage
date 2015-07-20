@@ -3,7 +3,7 @@
 # Table name: slots
 #
 #  id         :integer          not null, primary key
-#  occupied   :boolean
+#  occupied   :boolean          default("f")
 #  level_id   :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null

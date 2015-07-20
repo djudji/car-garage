@@ -4,6 +4,9 @@
   <div class="form-inputs">
     <%= f.input :parked %>
     <%= f.input :veh_type %>
+
+    <!-- This is a grouped select input -->
+    <%= f.association :slot, collection: Level.all, as: :grouped_select, group_method: :available_slots %>
   </div>
 
   <div class="form-actions">
