@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150719232633) do
+ActiveRecord::Schema.define(version: 20150719234153) do
 
   create_table "cars", force: :cascade do |t|
     t.boolean  "parked"
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20150719232633) do
     t.boolean  "occupied"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "level_id"
   end
 
   create_table "tasks", force: :cascade do |t|
