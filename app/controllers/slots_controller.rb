@@ -1,6 +1,6 @@
 class SlotsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_slot, only: [:show, :edit, :update, :destroy]
+  before_action :set_slot, only: [:unassign_vehicle, :show, :edit, :update, :destroy]
 
   # GET /slots
   # GET /slots.json
@@ -59,6 +59,14 @@ class SlotsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to levels_url, notice: 'Slot was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def unassign_vehicle
+    @slot.vehicle.delete
+    respond_to do |format|
+      format.html { redirect_to levels_url, notice: 'Slot was successfully cleared.' }
+      format.json { render :show, status: :ok, location: @vehicle }
     end
   end
 

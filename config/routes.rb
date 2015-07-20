@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     end
   end
   resources :slots
+  get "unassign_vehicle/:id", to: "slots#unassign_vehicle", as: "unassign_vehicle"
   resources :tasks do
     member do
       put :change

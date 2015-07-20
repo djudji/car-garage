@@ -25,9 +25,10 @@
           <div class="panel-body">
             <% if slot.vehicle %>
               <strong>Vehicle:</strong> <%= slot.vehicle.veh_type %> <br>
-              <strong>Plate:</strong> <%= slot.vehicle.lic_plate %>
+              <strong>Plate:</strong> <%= slot.vehicle.lic_plate %> <br>
+              <%= link_to "Unassign the Vehicle", unassign_vehicle_path(slot) %>
             <% else %>
-              <%= link_to "Assign a Vehicule", new_vehicle_path %>
+              <%= link_to "Assign a Vehicle", new_vehicle_path %>
             <% end %>
           </div>
         </div>
