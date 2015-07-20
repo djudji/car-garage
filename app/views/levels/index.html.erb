@@ -2,28 +2,30 @@
 
 <h1>Listing Levels</h1>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Number</th>
-      <th>Num slots</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<%= button_to "Add a new Level", { action: "create" }, { class: 'btn btn-default' } %>
 
-  <tbody>
-    <% @levels.each do |level| %>
-      <tr>
-        <td><%= level.number %></td>
-        <td><%= level.num_slots %></td>
-        <td><%= link_to 'Show', level %></td>
-        <td><%= link_to 'Edit', edit_level_path(level) %></td>
-        <td><%= link_to 'Destroy', level, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<% @levels.each do |level| %>
+  <h2 class="page-header">
+    Level <%= level.number %>
+    <%= link_to raw('<i class="fa fa-trash"></i>'), level, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs' %>
+    <%= button_to [:create_slot, level], { class: 'btn btn-default btn-xs' } do %>
+     Add a new Slot
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Level', new_level_path %>
+  </h2>
+  <div class="row">
+    <% level.slots.each_with_index do |slot, index| %>
+      <div class="col-md-3">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              <%= "Slot ##{index+1}" %>
+            </h3>
+          </div>
+          <div class="panel-body">
+            <%= slot.occupied %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>

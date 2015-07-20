@@ -1,6 +1,6 @@
 class LevelsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_level, only: [:show, :edit, :update, :destroy]
+  before_action :set_level, only: [:create_slot, :destroy]
 
   # GET /levels
   # GET /levels.json
@@ -8,45 +8,30 @@ class LevelsController < ApplicationController
     @levels = Level.all
   end
 
-  # GET /levels/1
-  # GET /levels/1.json
-  def show
-  end
-
-  # GET /levels/new
-  def new
-    @level = Level.new
-  end
-
-  # GET /levels/1/edit
-  def edit
-  end
-
-  # POST /levels
-  # POST /levels.json
-  def create
-    @level = Level.new(level_params)
-
+  def create_slot
+    @level.slots.build
     respond_to do |format|
       if @level.save
-        format.html { redirect_to @level, notice: 'Level was successfully created.' }
+        format.html { redirect_to levels_url, notice: 'Slot was successfully created.' }
         format.json { render :show, status: :created, location: @level }
       else
-        format.html { render :new }
+        format.html { redirect_to levels_url, notice: 'Something went wrong.' }
         format.json { render json: @level.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PATCH/PUT /levels/1
-  # PATCH/PUT /levels/1.json
-  def update
+  # POST /levels
+  # POST /levels.json
+  def create
+    @level = Level.new
+
     respond_to do |format|
-      if @level.update(level_params)
-        format.html { redirect_to @level, notice: 'Level was successfully updated.' }
-        format.json { render :show, status: :ok, location: @level }
+      if @level.save
+        format.html { redirect_to levels_url, notice: 'Level was successfully created.' }
+        format.json { render :show, status: :created, location: @level }
       else
-        format.html { render :edit }
+        format.html { redirect_to levels_url, notice: 'Something went wrong.' }
         format.json { render json: @level.errors, status: :unprocessable_entity }
       end
     end
@@ -74,10 +59,5 @@ class LevelsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_level
       @level = Level.find(params[:id])
-    end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def level_params
-      params.require(:level).permit(:number, :num_slots)
     end
 end
