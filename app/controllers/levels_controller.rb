@@ -55,10 +55,18 @@ class LevelsController < ApplicationController
   # DELETE /levels/1
   # DELETE /levels/1.json
   def destroy
-    @level.destroy
-    respond_to do |format|
-      format.html { redirect_to levels_url, notice: 'Level was successfully destroyed.' }
-      format.json { head :no_content }
+    # Here we insure that there still exist more than a level before destroying.
+    if Level.count > 1
+      @level.destroy
+      respond_to do |format|
+        format.html { redirect_to levels_url, notice: 'Level was successfully destroyed.' }
+        format.json { head :no_content }
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to levels_url, notice: 'You can\'t delete last Level.' }
+        format.json { head :no_content }
+      end
     end
   end
 
