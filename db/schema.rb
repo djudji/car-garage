@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150720102732) do
+ActiveRecord::Schema.define(version: 20150720133945) do
 
   create_table "custom_auto_increments", force: :cascade do |t|
     t.string   "counter_model_name"
@@ -30,10 +30,10 @@ ActiveRecord::Schema.define(version: 20150720102732) do
   end
 
   create_table "slots", force: :cascade do |t|
-    t.boolean  "occupied"
+    t.boolean  "occupied",   default: false
     t.integer  "level_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "tasks", force: :cascade do |t|

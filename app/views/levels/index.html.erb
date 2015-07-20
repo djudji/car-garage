@@ -15,7 +15,7 @@
   <div class="row">
     <% level.slots.each_with_index do |slot, index| %>
       <div class="col-md-3">
-        <div class="panel panel-default">
+        <div class="panel panel-<%= slot_class(slot) %>">
           <div class="panel-heading">
             <h3 class="panel-title">
               <%= "Slot ##{index+1}" %>
