@@ -13,6 +13,8 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'therubyracer' #, platforms: :ruby
 # Use Bootstrap (correct way)
 gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
+# Auto HTML -> Links to reckognize html
+gem 'auto_html'
 # Protokoll gem for adding custom atuo geneated strings
 gem 'protokoll'
 # Use FontAwesome fonts
