@@ -1,6 +1,6 @@
 class AddDefaultsToSlots < ActiveRecord::Migration
   def up
-    change_column_default :slots, :occupied, 0
+    change_column_default :slots, :occupied, :f
   end
 
   def down
