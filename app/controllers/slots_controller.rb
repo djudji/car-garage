@@ -5,7 +5,7 @@ class SlotsController < ApplicationController
   # GET /slots
   # GET /slots.json
   def index
-    @slots = level.slots
+    @slots = Slot.all
   end
 
   # GET /slots/1
@@ -25,7 +25,7 @@ class SlotsController < ApplicationController
   # POST /slots
   # POST /slots.json
   def create
-    @slot = level.slots.new(slot_params)
+    @slot = Slot.new(slot_params)
 
     respond_to do |format|
       if @slot.save
