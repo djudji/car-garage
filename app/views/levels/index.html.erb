@@ -19,6 +19,7 @@
           <div class="panel-heading">
             <h3 class="panel-title">
               <%= "Slot ##{index+1}" %>
+              <%= link_to raw('<i class="fa fa-trash"></i>'), slot, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default btn-xs' %>
             </h3>
           </div>
           <div class="panel-body">
