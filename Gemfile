@@ -1,8 +1,8 @@
+ruby "2.3.0"
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.3'
+gem 'rails', '4.2.5.1'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -14,7 +14,7 @@ gem 'therubyracer' #, platforms: :ruby
 # Use Bootstrap (correct way)
 gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 # Auto HTML -> Links to reckognize html
-gem 'auto_html'
+gem 'auto_html', '1.6.4'
 # Protokoll gem for adding custom atuo geneated strings
 gem 'protokoll'
 # Use FontAwesome fonts
